@@ -17,6 +17,7 @@ namespace NaughtyStep
         protected readonly T Context;
 
         public NaughtyStepRestSharpFeature()
+            : base()
         {
             Context = new T();
         }

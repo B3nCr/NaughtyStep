@@ -5,6 +5,8 @@
 // ****************************************************************
 
 using System;
+using System.Configuration;
+using System.Threading;
 
 namespace NaughtyStep
 {
@@ -14,6 +16,23 @@ namespace NaughtyStep
     /// </summary>
     public abstract class NaughtyStepFeatureBase
     {
+        protected int StepIntervalMilliseconds = 0;
+
+        protected NaughtyStepFeatureBase()
+        {
+            try
+            {
+                var milliseconds = ConfigurationManager.AppSettings["StepIntervalMilliseconds"];
+                if (String.IsNullOrEmpty(milliseconds)) return;
+                if (int.Parse(milliseconds) > 0)
+                {
+                    StepIntervalMilliseconds = int.Parse(milliseconds);
+                }
+            }
+            catch(Exception ex)
+            { throw new Exception("You need to set the StepIntervalMilliseconds to an integer value", ex); }
+        }
+
         public void Scenario(string message, Action step)
         {
             Console.WriteLine(message);
@@ -48,6 +67,7 @@ namespace NaughtyStep
                 Console.WriteLine(message);
                 step.Invoke();
                 Console.WriteLine(message.StartsWith("Scenario") ? "--> Scenario passed" : "--> Passed");
+                Thread.Sleep(StepIntervalMilliseconds);
             }
             catch (Exception ex)
             {
