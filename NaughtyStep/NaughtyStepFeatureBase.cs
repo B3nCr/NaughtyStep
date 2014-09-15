@@ -33,6 +33,13 @@ namespace NaughtyStep
             { throw new Exception("You need to set the StepIntervalMilliseconds to an integer value", ex); }
         }
 
+        public void Feature(string message, Action step)
+        {
+            Console.WriteLine(message);
+            step.Invoke();
+            Console.WriteLine("--> Feature passed");
+        }
+
         public void Scenario(string message, Action step)
         {
             Console.WriteLine(message);
@@ -66,12 +73,19 @@ namespace NaughtyStep
             {
                 Console.WriteLine(message);
                 step.Invoke();
-                Console.WriteLine(message.StartsWith("Scenario") ? "--> Scenario passed" : "--> Passed");
+                Console.WriteLine(message.StartsWith("Feature") ? "--> Feature passed" : message.StartsWith("Scenario") ? "--> Scenario passed" : "--> Passed");
                 Thread.Sleep(StepIntervalMilliseconds);
             }
             catch (Exception ex)
             {
-                if (ex.Message.StartsWith("Scenario")) return;
+                if (ex.Message.StartsWith("Scenario") || ex.Message.StartsWith("Feature")) return;
+                if (ex.GetType().Name.Contains("SuccessException"))return;
+                if(ex.GetType().Name.Contains("InconclusiveException"))
+                {
+                    Console.WriteLine("--> Inconclusive");
+                    throw;
+                }
+                
                 Console.WriteLine("--> Failure:");
                 Console.WriteLine(ex.Message);
                 throw;

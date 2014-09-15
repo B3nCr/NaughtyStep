@@ -21,6 +21,19 @@ namespace NaughtyStepTests
         }
 
         [Test]
+        public void Feature_IsCalledWhenItContainsASingleAction_ShouldCallAction()
+        {
+            //Arrange
+            var sut = new DerivedNaughtyStep();
+
+            //Act
+            sut.Feature("Testing", () => action());
+
+            //Assert
+            action.Received().Invoke();
+        }
+
+        [Test]
         public void Scenario_IsCalledWhenItContainsASingleAction_ShouldCallAction()
         {
             //Arrange

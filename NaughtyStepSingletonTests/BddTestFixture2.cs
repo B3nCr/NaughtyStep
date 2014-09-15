@@ -22,7 +22,7 @@ namespace NaughtyStepSingletonTests
         [TestFixtureTearDown]
         public new void Dispose()
         {
-           // base.Dispose();
+            //base.Dispose();
         }
 
         [Test]
