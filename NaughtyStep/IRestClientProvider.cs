@@ -4,6 +4,8 @@
 // obtain a copy of the license at http://naughtystepbdd.org
 // ****************************************************************
 
+using System;
+using System.Configuration;
 using RestSharp;
 
 namespace NaughtyStep
@@ -18,7 +20,7 @@ namespace NaughtyStep
     {
         public IRestClient GetTransientClient()
         {
-            return new RestClient();
+            return new RestClient(new Uri(ConfigurationManager.AppSettings["RestServiceBaseUri"]));
         }
 
         public IRestClient GetSingletonClient()

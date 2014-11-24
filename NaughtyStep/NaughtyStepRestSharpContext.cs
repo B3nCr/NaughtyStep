@@ -4,6 +4,7 @@
 // obtain a copy of the license at http://naughtystepbdd.org
 // ****************************************************************
 
+using System.Configuration;
 using RestSharp;
 using System;
 
@@ -40,7 +41,6 @@ namespace NaughtyStep
                 return;
             }
             Client = _clientProvider.GetSingletonClient();
-            Client = new RestClient();
         }
 
         public virtual IRestResponse PerformRequest<T>(RestRequest request) where T : class, new()
