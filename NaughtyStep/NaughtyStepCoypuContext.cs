@@ -8,6 +8,9 @@ using Coypu;
 using Coypu.Drivers;
 using System;
 using System.Configuration;
+using Coypu.Drivers.Selenium;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
 
 namespace NaughtyStep
 {
@@ -37,6 +40,12 @@ namespace NaughtyStep
             _browserProvider = browserProvider;
             _sessionLifestyle = (ContextSessionLifestyleAttribute)Attribute.GetCustomAttribute(this.GetType(), typeof(ContextSessionLifestyleAttribute));
             _browserSettings = (BrowserSettingsAttribute)Attribute.GetCustomAttribute(this.GetType(), typeof(BrowserSettingsAttribute));
+        }
+
+        public virtual void Init(BrowserSession customBrowserSession)
+        {
+            if(customBrowserSession == null) throw new ArgumentNullException("customBrowserSession");
+            Browser = customBrowserSession;
         }
 
         /// <summary>

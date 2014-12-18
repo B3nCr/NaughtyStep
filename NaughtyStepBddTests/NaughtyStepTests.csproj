@@ -32,16 +32,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Coypu, Version=2.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Coypu, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Coypu.2.5.1\lib\net40\Coypu.dll</HintPath>
+      <HintPath>..\packages\Coypu.2.7.0\lib\net40\Coypu.dll</HintPath>
     </Reference>
     <Reference Include="NSubstitute, Version=1.8.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NSubstitute.1.8.0.0\lib\net45\NSubstitute.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp, Version=105.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -72,6 +73,7 @@
     <Compile Include="Integration\BddTestFixture2.cs" />
     <Compile Include="Integration\BddTestFixture3.cs" />
     <Compile Include="Integration\BddTestFixture.cs" />
+    <Compile Include="Integration\CustomerDriverFixture.cs" />
     <Compile Include="Integration\RestHookup.cs" />
     <Compile Include="Integration\RestHookupTest3.cs" />
     <Compile Include="Integration\RestHookupTest2.cs" />

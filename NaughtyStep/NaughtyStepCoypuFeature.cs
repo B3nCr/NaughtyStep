@@ -4,6 +4,8 @@
 // obtain a copy of the license at http://naughtystepbdd.org
 // ****************************************************************
 
+using Coypu;
+
 namespace NaughtyStep
 {
     /// <summary>
@@ -20,6 +22,14 @@ namespace NaughtyStep
             : base()
         {
             Context = new T();
+        }
+
+        /// <summary>
+        /// Initialises the browser that you pass in. Usually it's best to call this either in a SetUp or TestFixtureSetUp.
+        /// </summary>
+        public virtual void Init(BrowserSession browserSession)
+        {
+            Context.Init(browserSession);
         }
 
         /// <summary>
